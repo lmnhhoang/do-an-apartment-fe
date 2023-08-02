@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../sidebar/sidebar'
-import Navigation from '../navigation/navigation'
+import Sidebar from '../sidebar/Sidebar'
+import Navigation from '../navigation/Navigation'
 import { Outlet } from 'react-router-dom' 
 
 function Layout() {
