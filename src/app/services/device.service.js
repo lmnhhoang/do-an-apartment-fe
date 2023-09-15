@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const billApi = createApi({
-    reducerPath: 'billApi',
+export const devicesApi = createApi({
+    reducerPath: 'devicesApi',
     baseQuery: fetchBaseQuery({ 
       baseUrl: 'https://do-an-aws.ap-southeast-2.elasticbeanstalk.com/api/',
       prepareHeaders: (headers, { getState }) => {
@@ -15,36 +15,36 @@ export const billApi = createApi({
         return headers
       }, }),
     endpoints: (builder) => ({
-      getBills: builder.query({
-        query: () => `bills`,
+      getDevices: builder.query({
+        query: () => `devices`,
       }),
-      getBillById: builder.query({
-        query: (id) => `bills/${id}`,
+      getDeviceById: builder.query({
+        query: (id) => `devices/${id}`
       }),
-      getBillsByApartmentId: builder.query({
-        query: (id) => `bills/apartment/${id}`,
-      }),
-      addBill: builder.mutation({
+    //   getDevicesByKeyword: builder.query({
+    //     query: (keyword) => `devices/search?num=${keyword}`
+    //   }),
+      createDevice: builder.mutation({
         query: (data) => ({
-            url : `bills`,
+            url : "devices",
             method: "POST",
             body: data
         })
       }),
-      updateBill: builder.mutation({
+      updateDevice: builder.mutation({
         query: ({id, ...data}) => ({
-            url : `bills/${id}`,
+            url : `devices/${id}`,
             method: "PUT",
             body: data
         })
       }),
-      deleteBill: builder.mutation({
+      deleteDevice: builder.mutation({
         query: (id) => ({
-            url: `bills/${id}`,
+            url: `devices/${id}`,
             method: "DELETE"
         })
       })
     }),
 })
 
-export const { useGetBillsQuery, useGetBillByIdQuery, useGetBillsByApartmentIdQuery, useAddBillMutation, useUpdateBillMutation, useDeleteBillMutation } = billApi
+export const { useGetDevicesQuery, useGetDeviceByIdQuery, useCreateDeviceMutation, useUpdateDeviceMutation, useDeleteDeviceMutation } = devicesApi

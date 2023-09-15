@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const billApi = createApi({
-    reducerPath: 'billApi',
+export const newsApi = createApi({
+    reducerPath: 'newsApi',
     baseQuery: fetchBaseQuery({ 
       baseUrl: 'https://do-an-aws.ap-southeast-2.elasticbeanstalk.com/api/',
       prepareHeaders: (headers, { getState }) => {
@@ -15,36 +15,36 @@ export const billApi = createApi({
         return headers
       }, }),
     endpoints: (builder) => ({
-      getBills: builder.query({
-        query: () => `bills`,
+      getNews: builder.query({
+        query: () => `news`,
       }),
-      getBillById: builder.query({
-        query: (id) => `bills/${id}`,
+      getNewById: builder.query({
+        query: (id) => `news/${id}`
       }),
-      getBillsByApartmentId: builder.query({
-        query: (id) => `bills/apartment/${id}`,
-      }),
-      addBill: builder.mutation({
+    //   getNewByKeyword: builder.query({
+    //     query: (keyword) => `News/search?num=${keyword}`
+    //   }),
+      createNew: builder.mutation({
         query: (data) => ({
-            url : `bills`,
+            url : "news",
             method: "POST",
             body: data
         })
       }),
-      updateBill: builder.mutation({
+      updateNew: builder.mutation({
         query: ({id, ...data}) => ({
-            url : `bills/${id}`,
+            url : `news/${id}`,
             method: "PUT",
             body: data
         })
       }),
-      deleteBill: builder.mutation({
+      deleteNew: builder.mutation({
         query: (id) => ({
-            url: `bills/${id}`,
+            url: `news/${id}`,
             method: "DELETE"
         })
       })
     }),
 })
 
-export const { useGetBillsQuery, useGetBillByIdQuery, useGetBillsByApartmentIdQuery, useAddBillMutation, useUpdateBillMutation, useDeleteBillMutation } = billApi
+export const { useGetNewsQuery, useGetNewByIdQuery, useCreateNewMutation, useUpdateNewMutation, useDeleteNewMutation } = newsApi

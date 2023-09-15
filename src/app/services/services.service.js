@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const billApi = createApi({
-    reducerPath: 'billApi',
+export const servicesApi = createApi({
+    reducerPath: 'servicesApi',
     baseQuery: fetchBaseQuery({ 
       baseUrl: 'https://do-an-aws.ap-southeast-2.elasticbeanstalk.com/api/',
       prepareHeaders: (headers, { getState }) => {
@@ -15,36 +15,36 @@ export const billApi = createApi({
         return headers
       }, }),
     endpoints: (builder) => ({
-      getBills: builder.query({
-        query: () => `bills`,
+      getServices: builder.query({
+        query: () => `services`,
       }),
-      getBillById: builder.query({
-        query: (id) => `bills/${id}`,
+      getServiceById: builder.query({
+        query: (id) => `services/${id}`
       }),
-      getBillsByApartmentId: builder.query({
-        query: (id) => `bills/apartment/${id}`,
-      }),
-      addBill: builder.mutation({
+    //   getServiceByKeyword: builder.query({
+    //     query: (keyword) => `services/search?num=${keyword}`
+    //   }),
+      createService: builder.mutation({
         query: (data) => ({
-            url : `bills`,
+            url : "services",
             method: "POST",
             body: data
         })
       }),
-      updateBill: builder.mutation({
+      updateService: builder.mutation({
         query: ({id, ...data}) => ({
-            url : `bills/${id}`,
+            url : `services/${id}`,
             method: "PUT",
             body: data
         })
       }),
-      deleteBill: builder.mutation({
+      deleteService: builder.mutation({
         query: (id) => ({
-            url: `bills/${id}`,
+            url: `services/${id}`,
             method: "DELETE"
         })
       })
     }),
 })
 
-export const { useGetBillsQuery, useGetBillByIdQuery, useGetBillsByApartmentIdQuery, useAddBillMutation, useUpdateBillMutation, useDeleteBillMutation } = billApi
+export const { useGetServicesQuery, useGetServiceByIdQuery, useCreateServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation } = servicesApi

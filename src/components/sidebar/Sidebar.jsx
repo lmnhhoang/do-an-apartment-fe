@@ -67,6 +67,62 @@ function sidebar() {
                         </li>
                     </ul>
                 </div>
+                <div className="menu-item">
+                    <h5>
+                        <span className="d-inline-block me-1"><i className="fa-solid fa-newspaper-o"></i></span>
+                        Quản lý tin tức
+                    </h5>
+                    <ul className="m-0 p-0">
+                        <li>
+                            <Link to={"/news"}>Danh sách tin tức</Link>
+                        </li>
+                        <li>
+                            <Link to={"/news/create"}>Tạo tin tức</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="menu-item">
+                    <h5>
+                        <span className="d-inline-block me-1"><i className="fa-solid fa-server"></i></span>
+                        Quản lý dịch vụ
+                    </h5>
+                    <ul className="m-0 p-0">
+                        <li>
+                            <Link to={"/services"}>Danh sách dịch vụ</Link>
+                        </li>
+                        {/* <li>
+                            <Link to={"/fees"}>Tạo dịch vụ</Link>
+                        </li> */}
+                    </ul>
+                </div>
+                <div className="menu-item">
+                    <h5>
+                        <span className="d-inline-block me-1"><i className="fa-solid fa-tablet"></i></span>
+                        Quản lý thiết bị
+                    </h5>
+                    <ul className="m-0 p-0">
+                        <li>
+                            <Link to={"/devices"}>Danh sách thiết bị</Link>
+                        </li>
+                        <li>
+                            <Link to={"/devices/create"}>Thêm thiết bị</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="menu-item">
+                    <h5>
+                        <span className="d-inline-block me-1"><i className="fa-solid fa-tablet"></i></span>
+                        Quản lý tài khoản
+                    </h5>
+                    <ul className="m-0 p-0">
+                        <li>
+                            <Link to={"/users"}>Danh sách tài khoản</Link>
+                        </li>
+                        <li>
+                            <Link to={"/users/create"}>Thêm tài khoản</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
   )

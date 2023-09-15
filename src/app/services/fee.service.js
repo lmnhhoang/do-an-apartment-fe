@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const feeApi = createApi({
     reducerPath: 'feeApi',
     baseQuery: fetchBaseQuery({ 
-      baseUrl: 'http://do-an-aws.ap-southeast-2.elasticbeanstalk.com/api/',
+      baseUrl: 'https://do-an-aws.ap-southeast-2.elasticbeanstalk.com/api/',
       prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
     
